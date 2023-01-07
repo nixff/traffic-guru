@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - *.*.*
-      - *.*.*-*
+      - '*.*.*'
+      - '*.*.*-*'
 
 defaults:
   run:
