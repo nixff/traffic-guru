@@ -19,6 +19,7 @@ RUN apk add --no-cache openssh-client nodejs npm alpine-sdk linux-headers musl v
     && npm rebuild bcrypt --build-from-source
 
 RUN cd /packages/server/ \
+    && yarn config set network-timeout 300000 \
     && yarn install \
     && NODE_ENV=production yarn build \
     && mkdir -p ${pkg_prefix}/flomesh/public/flomesh ${pkg_confdir} \
@@ -26,6 +27,7 @@ RUN cd /packages/server/ \
     && cp .env.example ${pkg_confdir}/env
 
 RUN cd /packages/gui \
+    && yarn config set network-timeout 300000 \
     && yarn install \
     && yarn build
 
