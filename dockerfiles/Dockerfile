@@ -61,7 +61,7 @@ RUN adduser -Su 1338 flomesh \
     && ln -s /usr/local/flomesh/public/flomesh /usr/local/flomesh/public/flomesh-gui \
     && chmod -R g=u /usr/local/flomesh
 
-COPY docker/docker-entrypoint.sh /docker-entrypoint.sh
+COPY dockerfiles/docker-entrypoint.sh /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
