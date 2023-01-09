@@ -43,7 +43,7 @@ jobs:
       release_version: ${{steps.version.outputs.release_version}}
       commit_date: ${{steps.version.outputs.commit_date}}
 
-  build-mage:
+  build-image:
     needs: set-release-version
     name: build-image
     runs-on: ubuntu-latest
@@ -69,8 +69,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: ${{secrets.IMAGE}}:latest,${{secrets.IMAGE}}:${{needs.set-release-version.outputs.release_version}}
-          file: docker/Dockerfile
+          file: dockerfiles/Dockerfile
 
